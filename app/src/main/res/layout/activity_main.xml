@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/startMainImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175"
+        app:srcCompat="@drawable/start1" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="174dp"
+        android:layout_height="59dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Next"
+        android:onClick="start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.849" />
+
+    <TextView
+        android:id="@+id/startMainTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.486" />
+
+    <TextView
+        android:id="@+id/startSecondTextView"
+        android:layout_width="381dp"
+        android:layout_height="105dp"
+        android:text="There are so many rooms in hotel availabe to book from anywhere on the map. so you can make a reservation remotely before you come to the hotel"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.648" />
+
+    <ImageView
+        android:id="@+id/startIndexImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735"
+        app:srcCompat="@drawable/index1" />
+
+    <TextView
+        android:id="@+id/startSkipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Skip"
+        android:textAlignment="center"
+        android:onClick="skip"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".CurrentReservationActivity">
+
+    <Button
+        android:id="@+id/buttonCheckOut"
+        android:layout_width="257dp"
+        android:layout_height="57dp"
+        android:background="@drawable/checkout"
+        android:onClick="checkOut"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781" />
+
+    <TextView
+        android:id="@+id/ResTotalPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number: "
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <TextView
+        android:id="@+id/ResNights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number: "
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <TextView
+        android:id="@+id/ResCheckInDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number: "
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/ResRoomNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number: "
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <TextView
+        android:id="@+id/textViewxx9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Payment:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
+
+    <TextView
+        android:id="@+id/textViewxx8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nights:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42000002" />
+
+    <TextView
+        android:id="@+id/textViewxx7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check-In Date:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/textViewxx6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number: "
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <TextView
+        android:id="@+id/textViewxx3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Reservation"
+        android:textColor="@color/purple_700"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/checkOutAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to check out all rooms"
+        android:textColor="@color/design_default_color_error"
+        android:textStyle="bold"
+        android:onClick="checkOutAllFunc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+</androidx.constraintlayout.widget.ConstraintLayout>

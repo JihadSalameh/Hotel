@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pathx"
+    tools:context=".CheckInActivity">
+
+    <Button
+        android:id="@+id/buttonCont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttoncont"
+        android:onClick="continueFunc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
+    <TextView
+        android:id="@+id/textViewMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/holo_orange"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/textViewxx5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check in Room number"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/textViewTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756" />
+
+    <TextView
+        android:id="@+id/textViewxx4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTotal"
+        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756" />
+
+    <TextView
+        android:id="@+id/textViewxx2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <RadioButton
+        android:id="@+id/radioButtonWithoutRoomService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Room service"
+        android:onClick="withoutRoomServiceFunc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="175dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <TextView
+        android:id="@+id/textViewxx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nights: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
+    <TextView
+        android:id="@+id/textViewNights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
+    <RadioButton
+        android:id="@+id/radioButtonWithRoomService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room service"
+        android:onClick="withRoomServiceFunc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="275dp"
+        android:layout_height="45dp"
+        android:background="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
