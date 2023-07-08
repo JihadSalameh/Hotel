@@ -4,87 +4,90 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ImageView dontHaveAccount;
-    EditText editTextUsername, editTextPassword;
-    Button buttonLogin;
+    TextView dontHaveAccount;
+    EditText usernameTxt, passwordTxt;
+    Button loginBtn;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         initialize();
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
     private void initialize() {
-        dontHaveAccount = findViewById(R.id.imageViewDontHave);
-        editTextUsername = findViewById(R.id.loginUser);
-        editTextPassword = findViewById(R.id.loginPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
-    }
-
-    public void createAccount(View view) {
-        Intent intent=new Intent(LoginActivity .this , SignupActivity.class);
-        startActivity(intent);
-        finish();
+        dontHaveAccount = findViewById(R.id.dontHaveAccount);
+        usernameTxt = findViewById(R.id.signupEmailTxt);
+        passwordTxt = findViewById(R.id.signupPasswordTxt);
+        loginBtn = findViewById(R.id.loginBtn);
     }
 
     public void login(View view) {
-        String username= String.valueOf(editTextUsername.getText());
-        String password= String.valueOf(editTextPassword.getText());
+        String username= String.valueOf(usernameTxt.getText());
+        String password= String.valueOf(passwordTxt.getText());
 
         if(username.isEmpty()  || password.isEmpty()) {
             Toast.makeText(this, "Please make sure all fields are not empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        System.out.println(username + " ////////////////////////////////////// " + password);
-
         loginConnection(username, password);
     }
 
     private void loginConnection(String username, String password) {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(() -> {
-            //Starting Write and Read data with URL
-            //Creating array for parameters
-            String[] field = new String[2];
-            field[0] = "username";
-            field[1] = "password";
+        String url = "http://192.168.1.226/hotel/login.php";
 
-            //Creating array for data
-            String[] data = new String[2];
-            data[0] = username;
-            data[1] = password;
-
-            PutData putData = new PutData("http://192.168.1.253/hotel/login.php", "POST", field, data);
-            if(putData.startPut()) {
-                if(putData.onComplete()) {
-                    String result = putData.getResult();
-                    if(result.equals("Login Success")) {
-                        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    if(response.equals("\nLogin Success")) {
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                        System.out.println(result);
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                     }
-
-                }
+                },
+                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show()) {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
             }
-        });
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("password", password);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+
+    public void createAccount(View view) {
+        startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+        finish();
     }
 
 }

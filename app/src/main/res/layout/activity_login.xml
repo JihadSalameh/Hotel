@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonlogin"
@@ -36,9 +36,9 @@
             app:layout_constraintVertical_bias="0.75" />
 
         <EditText
-            android:id="@+id/loginUser"
+            android:id="@+id/signupEmailTxt"
             android:layout_width="248dp"
-            android:layout_height="41dp"
+            android:layout_height="48dp"
             android:drawableLeft="@drawable/name"
             android:drawablePadding="10dp"
             android:ems="10"
@@ -52,9 +52,9 @@
             app:layout_constraintVertical_bias="0.2" />
 
         <EditText
-            android:id="@+id/loginPassword"
+            android:id="@+id/signupPasswordTxt"
             android:layout_width="248dp"
-            android:layout_height="41dp"
+            android:layout_height="48dp"
             android:drawableLeft="@drawable/key"
             android:drawablePadding="10dp"
             android:ems="10"
@@ -77,19 +77,20 @@
             app:layout_constraintVertical_bias="0.045"
             app:srcCompat="@drawable/hotel" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dontHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:onClick="createAccount"
+            android:text="Don't Have An Account?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageViewDontHave"
-        android:layout_width="221dp"
-        android:layout_height="37dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="createAccount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90999997"
-        app:srcCompat="@drawable/donthave" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView2"

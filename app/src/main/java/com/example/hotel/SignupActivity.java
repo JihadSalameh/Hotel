@@ -2,22 +2,27 @@ package com.example.hotel;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
-    ImageView alreadyHaveAccount;
-    EditText editTextUsername, editTextEmail, editTextPassword;
+    TextView alreadyHaveAccount;
+    EditText usernameTxt, emailTxt, passwordTxt;
     Button buttonSignup;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +30,21 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         initialize();
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
     private void initialize() {
-        alreadyHaveAccount = findViewById(R.id.imageViewAlreadyHave);
-        editTextUsername = findViewById(R.id.editTextTextPersonName);
-        editTextEmail = findViewById(R.id.loginUser);
-        editTextPassword = findViewById(R.id.loginPassword);
+        alreadyHaveAccount = findViewById(R.id.HaveAccount);
+        usernameTxt = findViewById(R.id.signupUsernameTxt);
+        emailTxt = findViewById(R.id.signupEmailTxt);
+        passwordTxt = findViewById(R.id.signupPasswordTxt);
         buttonSignup = findViewById(R.id.buttonSignUp);
     }
 
     public void signUp(View view) {
-        String username= String.valueOf(editTextUsername.getText());
-        String email= String.valueOf(editTextEmail.getText());
-        String password= String.valueOf(editTextPassword.getText());
+        String username= String.valueOf(usernameTxt.getText());
+        String email= String.valueOf(emailTxt.getText());
+        String password= String.valueOf(passwordTxt.getText());
 
         if(username.isEmpty() || email.isEmpty() || password.isEmpty() ){
             Toast.makeText(getApplicationContext(), "Please make sure all fields are not empty!", Toast.LENGTH_SHORT).show();
@@ -49,42 +55,40 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signUpConnection(String username, String email, String password) {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(() -> {
-            //Starting Write and Read data with URL
-            //Creating array for parameters
-            String[] field = new String[3];
-            field[0] = "username";
-            field[1] = "email";
-            field[2] = "password";
-            //Creating array for data
-            String[] data = new String[3];
-            data[0] = username;
-            data[1] = email;
-            data[2] = password;
-            PutData putData = new PutData("http://192.168.1.253/hotel/signup.php", "POST", field, data);
-            if (putData.startPut()) {
-                if (putData.onComplete()) {
-                    String result = putData.getResult();
-                    if(result.equals("Sign Up Success")){
-                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(SignupActivity.this , LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                    }
+        String url = "http://192.168.1.226/hotel/signup.php";
 
-                }
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    if(response.equals("\nSign Up Success")) {
+                        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Try Again Later1", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> Toast.makeText(getApplicationContext(), "Try Again Later2", Toast.LENGTH_SHORT).show()) {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
             }
-            //End Write and Read data with URL
-        });
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("username", username);
+                params.put("password", password);
+                params.put("email", email);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
     public void haveAccount(View view) {
-        Intent intent=new Intent(SignupActivity.this , LoginActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         finish();
     }
 }

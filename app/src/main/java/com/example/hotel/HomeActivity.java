@@ -30,7 +30,7 @@ import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    String urladdress = "http://192.168.1.253/hotel/rooms.php";
+    String urladdress = "http://192.168.1.226/hotel/rooms.php";
     String[] roomNumber, price, imagepath;
     BufferedInputStream is;
     String line = null, result = null;

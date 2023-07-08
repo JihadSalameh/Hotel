@@ -19,18 +19,6 @@
         app:layout_constraintVertical_bias="0.045"
         app:srcCompat="@drawable/hotel" />
 
-    <ImageView
-        android:id="@+id/imageViewAlreadyHave"
-        android:layout_width="219dp"
-        android:layout_height="25dp"
-        android:onClick="haveAccount"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90999997"
-        app:srcCompat="@drawable/haveaccount" />
-
     <View
         android:id="@+id/view"
         android:layout_width="450dp"
@@ -44,7 +32,7 @@
         app:layout_constraintVertical_bias="0.539" />
 
     <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/signupPasswordTxt"
         android:layout_width="248dp"
         android:layout_height="41dp"
         android:drawableLeft="@drawable/key"
@@ -60,7 +48,7 @@
         app:layout_constraintVertical_bias="0.562" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/signupUsernameTxt"
         android:layout_width="248dp"
         android:layout_height="41dp"
         android:drawableLeft="@drawable/name"
@@ -76,7 +64,7 @@
         app:layout_constraintVertical_bias="0.154" />
 
     <EditText
-        android:id="@+id/loginUser"
+        android:id="@+id/signupEmailTxt"
         android:layout_width="248dp"
         android:layout_height="41dp"
         android:drawableLeft="@drawable/email"
@@ -132,4 +120,17 @@
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.776" />
+
+    <TextView
+        android:id="@+id/HaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:onClick="haveAccount"
+        android:text="Already Have An Acount?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

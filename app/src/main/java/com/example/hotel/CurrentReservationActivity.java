@@ -56,7 +56,7 @@ public class CurrentReservationActivity extends AppCompatActivity {
             //Creating array for data
             String[] data = new String[1];
             data[0] = number;
-            PutData putData = new PutData("http://192.168.1.253/hotel/checkoutall.php", "POST", field, data);
+            PutData putData = new PutData("http://192.168.1.226/hotel/checkoutall.php", "POST", field, data);
             if (putData.startPut()) {
                 if (putData.onComplete()) {
                     String result = putData.getResult();
@@ -89,7 +89,7 @@ public class CurrentReservationActivity extends AppCompatActivity {
             //Creating array for data
             String[] data = new String[1];
             data[0] = number;
-            PutData putData = new PutData("http://192.168.1.253/hotel/checkout.php", "POST", field, data);
+            PutData putData = new PutData("http://192.168.1.226/hotel/checkout.php", "POST", field, data);
             if(putData.startPut()) {
                 if(putData.onComplete()) {
                     String result = putData.getResult();
