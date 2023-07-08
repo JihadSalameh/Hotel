@@ -1,14 +1,16 @@
 package com.example.hotel;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class CheckInResultActivity extends AppCompatActivity {
 
-    Button finish;
+    Button finish, rent, noRent;
     String  roomNumber, nights, date, total;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,29 @@ public class CheckInResultActivity extends AppCompatActivity {
         finish = findViewById(R.id.buttonDone);
 
         finish.setOnClickListener(v -> {
+            openCarRentalDialog();
+        });
+    }
+
+    private void openCarRentalDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final View locationPopUp = getLayoutInflater().inflate(R.layout.popup, null);
+
+        rent = locationPopUp.findViewById(R.id.rent);
+        noRent = locationPopUp.findViewById(R.id.cancel);
+
+        alertDialogBuilder.setView(locationPopUp);
+        alertDialogBuilder.create();
+        alertDialogBuilder.show();
+
+        rent.setOnClickListener(v -> {
+            Intent intent=new Intent(CheckInResultActivity.this , CarRentalActivity.class);
+            startActivity(intent);
+            finishAffinity();
+            setData();
+        });
+
+        noRent.setOnClickListener(v -> {
             Intent intent=new Intent(CheckInResultActivity.this , HomeActivity.class);
             startActivity(intent);
             finishAffinity();

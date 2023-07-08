@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginConnection(String username, String password) {
-        String url = "http://192.168.1.226/hotel/login.php";
+        String url = "http://192.168.1.9/hotel/login.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {

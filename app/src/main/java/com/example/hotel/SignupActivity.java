@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signUpConnection(String username, String email, String password) {
-        String url = "http://192.168.1.226/hotel/signup.php";
+        String url = "http://192.168.1.9/hotel/signup.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {

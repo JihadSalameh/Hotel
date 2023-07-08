@@ -12,10 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:usesCleartextTraffic="true"
-       >
-        <!-- for http support-->
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        android:usesCleartextTraffic="true">
+
+        <!-- for http support -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".CarRentalActivity"
+            android:exported="false" />
         <activity
             android:name=".CurrentReservationActivity"
             android:exported="true" />
