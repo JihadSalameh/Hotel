@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toEndOf="@+id/save"
+        app:layout_constraintStart_toEndOf="@+id/rent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
