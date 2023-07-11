@@ -127,7 +127,7 @@ public class CheckInActivity extends AppCompatActivity implements AdapterView.On
             String[] data = new String[1];
             data[0] = number;
 
-            PutData putData = new PutData("http://192.168.1.9/hotel/book.php", "POST", field, data);
+            PutData putData = new PutData("http://192.168.1.14/hotel/book.php", "POST", field, data);
             if(putData.startPut()) {
                 if(putData.onComplete()) {
                     String result = putData.getResult();

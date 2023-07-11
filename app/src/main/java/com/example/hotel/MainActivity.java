@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mainText, secondText, skip;
     Button startButton;
     int index=1;
-    static final String SHARED_PREFS = "sharedPrefs", ROOM = "room",NIGHTS = "nights",DATE = "date",TOTAL = "total";
+    static final String SHARED_PREFS = "sharedPrefs", CAR_NAME = "car_name", CAR_NUMBER = "car_number", ROOM = "room",NIGHTS = "nights",DATE = "date",TOTAL = "total";
     String mainText2="Ticket Booking", mainText3="Enjoy Your Holiday";
     String secondText2="Your room is ready as soon as you verify the booking of your fly ticket. Only few moments and the room is yours";
     String secondText3="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form";

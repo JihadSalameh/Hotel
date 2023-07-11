@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- activity_profile.xml -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00A4FE"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-113dp"
+        tools:layout_editor_absoluteY="-107dp">
+
+        <!-- User Profile Information -->
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/homer" />
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Welcome to your profile page"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/usernameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Username: " />
+
+        <TextView
+            android:id="@+id/emailTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Email: " />
+
+        <!-- Button to Return to Home Activity -->
+        <Button
+            android:id="@+id/buttonReturnHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Return to Home" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

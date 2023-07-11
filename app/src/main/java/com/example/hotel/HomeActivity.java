@@ -30,7 +30,7 @@ import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    String urladdress = "http://192.168.1.9/hotel/rooms.php";
+    String urladdress = "http://192.168.1.14/hotel/rooms.php";
     String[] roomNumber, price, imagepath;
     BufferedInputStream is;
     String line = null, result = null;
@@ -97,6 +97,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    public void goToUserProfile(View view) {
+        Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
     private void initialize() {
         listView = findViewById(R.id.lview);
         search = findViewById(R.id.edSearch);
@@ -144,7 +149,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     @Override

@@ -32,15 +32,16 @@ public class CheckInResultActivity extends AppCompatActivity {
     }
 
     private void openCarRentalDialog() {
+        AlertDialog dialog;
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        final View locationPopUp = getLayoutInflater().inflate(R.layout.popup, null);
+        final View rentPopUp = getLayoutInflater().inflate(R.layout.popup, null);
 
-        rent = locationPopUp.findViewById(R.id.rent);
-        noRent = locationPopUp.findViewById(R.id.cancel);
+        rent = rentPopUp.findViewById(R.id.rent);
+        noRent = rentPopUp.findViewById(R.id.cancel);
 
-        alertDialogBuilder.setView(locationPopUp);
-        alertDialogBuilder.create();
-        alertDialogBuilder.show();
+        alertDialogBuilder.setView(rentPopUp);
+        dialog = alertDialogBuilder.create();
+        dialog.show();
 
         rent.setOnClickListener(v -> {
             Intent intent=new Intent(CheckInResultActivity.this , CarRentalActivity.class);

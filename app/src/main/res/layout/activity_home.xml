@@ -28,6 +28,18 @@
         app:layout_constraintVertical_bias="0.417"
         app:srcCompat="@drawable/hotelsearch" />
 
+    <Button
+        android:id="@+id/buttonUserProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="goToUserProfile"
+        android:text="User Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <EditText
         android:id="@+id/edSearch"
         android:layout_width="363dp"
@@ -41,7 +53,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3"
-        app:layout_constraintVertical_bias="0.868" />
+        app:layout_constraintVertical_bias="0.868"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ListView
         android:id="@+id/lview"
@@ -49,14 +62,15 @@
         android:layout_height="454dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/currentResv"
-        android:layout_width="43dp"
-        android:layout_height="41dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:onClick="currentReserve"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,5 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view3"
         app:layout_constraintVertical_bias="0.048"
-        app:srcCompat="@drawable/res" />
+        app:srcCompat="@drawable/res"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

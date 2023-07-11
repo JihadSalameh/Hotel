@@ -13,8 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <!-- for http support -->
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" /> <!-- for http support -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
