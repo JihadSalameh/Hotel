@@ -6,39 +6,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CarRentalActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    String urladdress = "http://192.168.1.14/hotel/cars.php";
+    String urlAddress = "http://192.168.1.14/hotel/cars.php";
+    String urlAddress1 = "http://192.168.1.14/hotel/bookCar.php";
     String[] carNumber, price, imagepath, carName;
     BufferedInputStream is;
     String line = null, result = null;
     ListView listView;
     EditText search;
     public static String currentCarName, currentCarNumber, nights, date, total;
+    RequestQueue requestQueue;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -49,6 +53,7 @@ public class CarRentalActivity extends AppCompatActivity implements AdapterView.
 
         initialize();
         collectData();
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         CustomListView customListView = new CustomListView(this,carNumber,price,imagepath);
         listView.setAdapter(customListView);
@@ -62,12 +67,14 @@ public class CarRentalActivity extends AppCompatActivity implements AdapterView.
             Button rent = popUp.findViewById(R.id.rent);
             Button noRent = popUp.findViewById(R.id.cancel);
 
-            txt.setText("You can use the code: res123 by the reception to get 20% discount");
             alertDialogBuilder.setView(popUp);
             dialog = alertDialogBuilder.create();
             dialog.show();
+            //txt.setText("You can use the code: res123 by the reception to get 20% discount");
 
             rent.setOnClickListener(v -> {
+                currentCarNumber = carNumber[i];
+                rentCar(currentCarNumber);
                 Intent intent=new Intent(CarRentalActivity.this, HomeActivity.class);
                 startActivity(intent);
             });
@@ -86,6 +93,28 @@ public class CarRentalActivity extends AppCompatActivity implements AdapterView.
 
             return true;
         });
+    }
+
+    private void rentCar(String currentCarNumber) {
+        StringRequest request = new StringRequest(Request.Method.POST, urlAddress1,
+                response -> Toast.makeText(getApplicationContext(), "car Reserved", Toast.LENGTH_SHORT).show(),
+                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show()) {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
+            }
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("carNumber", currentCarNumber);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
     private void saveSharedPref() {
@@ -108,7 +137,7 @@ public class CarRentalActivity extends AppCompatActivity implements AdapterView.
     private void collectData() {
         //connection
         try {
-            URL url=new URL(urladdress);
+            URL url=new URL(urlAddress);
             HttpURLConnection con=(HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             is=new BufferedInputStream(con.getInputStream());

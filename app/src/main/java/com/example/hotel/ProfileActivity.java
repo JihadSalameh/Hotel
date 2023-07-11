@@ -1,14 +1,15 @@
 package com.example.hotel;
 
-import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -18,7 +19,6 @@ public class ProfileActivity extends AppCompatActivity {
     TextView usernameTxt, emailTxt;
     RequestQueue requestQueue;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +28,20 @@ public class ProfileActivity extends AppCompatActivity {
         emailTxt = findViewById(R.id.emailTxt);
 
         requestQueue = Volley.newRequestQueue(this);
-        getUserInfoFromServer(usernameTxt.getText().toString());
+
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.SHARED_PREFS, MODE_PRIVATE);
+        String username1 = sharedPreferences.getString(MainActivity.USERNAME, "");
+        getUserInfoFromServer(username1);
     }
 
     private void getUserInfoFromServer(String username1) {
-
         String url = "http://192.168.1.14/hotel/get_user.php?username=" + username1;
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
-                        System.out.println("//////////////////////////////////////");
-                        String username = response.getString("username");
-                        String email = response.getString("email");
+                        String username = response.getJSONObject(0).getString("username");
+                        String email = response.getJSONObject(0).getString("email");
 
                         usernameTxt.setText(username);
                         emailTxt.setText(email);
@@ -51,5 +52,9 @@ public class ProfileActivity extends AppCompatActivity {
                 Throwable::printStackTrace);
 
         requestQueue.add(request);
+    }
+
+    public void returnHome(View view) {
+        finish();
     }
 }
